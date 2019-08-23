@@ -30,12 +30,12 @@ describe 'CounterCache', ->
 
   describe '::flushTo', ->
 
-    it 'flushes an ever-increasing value', ->
+    it 'resets counter after flush', ->
       counter.increment('foo')
       counter.flushTo queue
       expect(queue).to.eql [{name: 'foo', value: 1}]
 
       counter.increment('foo')
       counter.flushTo queue
-      expect(queue).to.eql [{name: 'foo', value: 1},{name: 'foo', value: 2}]
+      expect(queue).to.eql [{name: 'foo', value: 1},{name: 'foo', value: 1}]
 

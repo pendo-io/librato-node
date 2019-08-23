@@ -7,6 +7,7 @@ class CounterCache
     for key, value of @cache
       [name, source] = key.split ';'
       queue.push unless source? then {name, value} else {name, value, source}
+    @cache = {}
 
   increment: (name, value=1) ->
     @cache[name] ?= 0
